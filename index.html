@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
@@ -37,15 +38,24 @@
                 </div>
                 <!-- History -->
                 <div class="text-sm-right text-center justify-content-center col-12 col-sm-4">
-                    <input class="btn btn-info history" type="button" value="History">
+                    <input class="btn btn-info history" type="button" value="History" data-toggle="modal" data-target="#historyModal">
                 </div>
 
             </div>
         </div>
         <!-- Search -->
         <div class="mt-1 mt-lg-0 col-12 col-lg-3">
-            <input type="search" id="search" class="form-control" placeholder="Search Your Pokemon">
+            <!-- <input type="search" class="search_input form-control" placeholder="Search Your Pokemon"> -->
+            <div class="container h-100">
+                <div class="d-flex justify-content-center h-100">
+                  <div class="searchbar">
+                    <input class="search_input" type="text" name="" placeholder="Search...">
+                    <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
+                  </div>
+                </div>
+              </div>
         </div>
+        
     </nav>
     <!-- Pokemons Data -->
     <div id="poke_container" class="poke-container"></div>
@@ -69,7 +79,7 @@
                                         class="material-icons md-24 md-light">person</i></span>
                             </div>
                             <input type="text" class="form-control" placeholder="Nombre" aria-label="Nombre"
-                                aria-describedby="basic-name" id="inputName">
+                                aria-describedby="basic-name" id="inputName" onkeypress="return /[a-z]/i.test(event.key) required">
                         </div>
                         <!-- Mail #inputMail-->
                         <div class="input-group mb-3">
@@ -77,8 +87,9 @@
                                 <span class="input-group-text" id="basic-mail"><i
                                         class="material-icons md-24 md-light">mail</i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Mail" aria-label="Mail"
-                                aria-describedby="basic-mail" id="inputMail">
+                            <input type="mail" class="form-control" placeholder="Mail" aria-label="Mail"
+                                aria-describedby="basic-mail" id="inputMail" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                                required>
                         </div>
                         <!-- Password #inputPassword-->
                         <div class="input-group mb-3">
@@ -118,7 +129,7 @@
                                         class="material-icons md-24 md-light">pets</i></span>
                             </div>
                             <input type="text" class="form-control" placeholder="Nombre" name="name"
-                                id="inputPokemonName">
+                                id="inputPokemonName" onkeypress="return /[a-z]/i.test(event.key)" required>
                         </div>
                         <!-- Type #inputType-->
                         <div class="input-group mb-3">
@@ -126,10 +137,9 @@
                                 <span class="input-group-text" id="basic-type"><i
                                         class="material-icons md-24 md-light">spa</i></span>
                             </div>
-                            <select class="custom-select type-select" name="type">
+                            <select class="custom-select type-select" name="type" required>
                                 <option value="">Seleccione un Tipo de Pokemon</option>
                             </select>
-                            <!-- <input type="text" class="form-control" placeholder="Type" aria-label="Type" aria-describedby="basic-mail" id="inputType"> -->
                         </div>
                         <!-- Image #inputImg-->
                         <div class="input-group mb-3">
@@ -137,7 +147,7 @@
                                 <span class="input-group-text" id="basic-img"><i
                                         class="material-icons md-24 md-light">insert_photo</i></span>
                             </div>
-                            <input type="file" class="form-control" name="file" id="inputImg">
+                            <input type="file" class="form-control" name="file" id="inputImg" accept='image/*'>
                         </div>
                     </div>
                     <!-- Sing up #-->
@@ -146,6 +156,39 @@
                     </div>
                 </div>
             </form>
+        </div>
+    </div>
+    <!-- History Modal -->
+    <div class="modal" id="historyModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header bg-success">
+              <h5 class="modal-title">Historial de Búsqueda</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center">
+                <span class="material-icons">history</span>Esta es tu historial de búsqueda:
+                <span class="date"></span>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Hora</th>
+                                <th scope="col">Busqueda</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                  </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
         </div>
     </div>
 

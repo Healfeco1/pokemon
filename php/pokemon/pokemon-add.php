@@ -10,7 +10,7 @@ if (isset($_POST['name'])) {
     if (is_array($_FILES)) {
         if (is_uploaded_file($_FILES['file']['tmp_name'])) {
             $sourcePath = $_FILES['file']['tmp_name'];
-            $targetPath = "images/" . $img_name;
+            $targetPath = "../../images/" . $img_name;
             move_uploaded_file($sourcePath, $targetPath);
         }
     }
