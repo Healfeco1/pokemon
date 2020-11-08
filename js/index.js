@@ -52,7 +52,7 @@ const main_types = Object.keys(colors);
 
 // Load search localstorange history
 let aux = JSON.parse(searchLocalHistory);
-if(aux.length > 0){
+if(aux != null){
     for (let i = 0; i < aux.length; i++) {
         searchHistory.push({
             "busqueda": aux[i].busqueda,
