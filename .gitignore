@@ -1,0 +1,12 @@
+.vscode/
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+composer.lock
+composer.json
+.htaccess
+.env
+.DS_Store
+.env.development
+database.php
